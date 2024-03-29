@@ -206,23 +206,40 @@ export const Header = props => {
         </Text>
       </Link>
       <Link to="/cart" style={{textDecoration: 'none'}}>
-        <img
-          src="https://static-00.iconduck.com/assets.00/shopping-cart-icon-2048x2047-gv68pvgw.png"
-          alt="Cart Icon"
+        <Image
+          source={{
+            uri: 'https://static-00.iconduck.com/assets.00/shopping-cart-icon-2048x2047-gv68pvgw.png',
+          }}
+          resizeMode="contain"
           style={{
-            width: '30px',
             tintColor: 'white',
-            filter: 'invert(100%)',
-            height: '30px',
+            height: 45,
+            width: 45,
           }}
         />
-        <Text
-          style={{
-            color: isDarkMode ? Colors.white : Colors.black,
-            fontSize: getFontSize(8),
-          }}>
-          {products.length}
-        </Text>
+        {products.length > 0 && (
+          <View
+            style={{
+              position: 'absolute',
+              top: 30,
+
+              right: 20,
+              height: 30,
+              width: 30,
+              backgroundColor: 'red',
+              borderRadius: 50,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                color: isDarkMode ? Colors.white : Colors.black,
+                fontSize: getFontSize(7),
+              }}>
+              {products.length}
+            </Text>
+          </View>
+        )}
       </Link>
     </View>
   );
@@ -336,7 +353,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   image: {
-    width: 110,
+    width: 120,
     height: 120,
   },
   inputStyle: {
